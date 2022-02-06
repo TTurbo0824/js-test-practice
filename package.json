@@ -1,0 +1,19 @@
+{
+  "name": "js-test-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/script.test.js",
+    "report": "mocha test/script.test.js --timeout 50000 --exit --sort --reporter @mochajs/json-file-reporter"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@mochajs/json-file-reporter": "^1.3.0",
+    "chai": "^4.3.6",
+    "geteventlisteners": "^1.1.0",
+    "jsdom": "^19.0.0",
+    "mocha": "^9.2.0"
+  }
+}

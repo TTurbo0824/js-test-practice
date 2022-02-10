@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/script.test.js",
-    "report": "mocha test/script.test.js --timeout 50000 --exit --sort --reporter @mochajs/json-file-reporter"
+    "test": "mocha validation-check/test/script.test.js",
+    "report": "mocha validation-check/test/script.test.js --timeout 50000 --exit --sort --reporter @mochajs/json-file-reporter"
   },
   "author": "",
   "license": "ISC",

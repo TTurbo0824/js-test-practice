@@ -8,7 +8,7 @@ const { document, KeyboardEvent, Element } = window;
 global.Element = Element
 require('geteventlisteners');
 
-// eval(validator) // 스크립트 실행
+eval(validator) // 스크립트 실행
 eval(script) // 스크립트 실행
 
 const separator = () => console.log('\n-----------------------------------------')
@@ -92,7 +92,8 @@ describe('💡 유효성 검사 함수를 작성하세요', () => {
   })
 })
 
-describe('💡 비밀번호 일치 여부를 확인하고 시각적 피드백을 제공해야 합니다', () => {
+describe('💡 Advanced 유효성 검사 함수를 작성하세요', () => {
+  after(separator)
 
   it('비밀번호 확인창에 keyup 이벤트 핸들러가 존재해야 합니다', () => {
     const elInputPasswordRetype = document.querySelector('#password-retype')
@@ -127,4 +128,25 @@ describe('💡 비밀번호 일치 여부를 확인하고 시각적 피드백을
     elInputPasswordRetype.dispatchEvent(e)
     expect(document.querySelector('.mismatch').classList.contains('hide')).to.be.true
   })
+})
+
+describe('💡 비밀번호 일치 여부를 확인하고 시각적 피드백을 제공해야 합니다', () => {
+  
+  it('아이디는 숫자와 영어로만 작성되어야 합니다', () => {
+    const elInputUsername = document.querySelector('#username')
+    elInputUsername.value = '아이디123'
+    const e = new KeyboardEvent('keyup')
+    elInputUsername.dispatchEvent(e)
+    expect(document.querySelector('.failure-mixed').classList.contains('hide')).to.be.false
+  })
+
+  it('비밀번호 창에 값이 입력될 때, 유효성 검사를 통과하지 못하면 `.failure-vali` 메시지가 보여야 합니다', () => {
+    const elInputPassword = document.querySelector('#password')
+    elInputPassword.value = 'qwer1234'
+
+    const e = new KeyboardEvent('keyup')
+    elInputPassword.dispatchEvent(e)
+    expect(document.querySelector('.failure-vali').classList.contains('hide')).to.be.false
+  })
+
 })

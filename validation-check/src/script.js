@@ -4,16 +4,29 @@ let passwordRetype = document.querySelector('#password-retype');
 
 let usernameFailureShort = document.querySelector('.failure-short');
 let usernameFailureLong = document.querySelector('.failure-long');
+let usernameMixed = document.querySelector('.failure-mixed');
 let passwordMis = document.querySelector('.mismatch');
+let passwordWrong = document.querySelector('.failure-vali');
 
 username.addEventListener('keyup', () => {
+  if (username.value && !onlyNumberAndEnglish(username.value)) {
+    usernameMixed.classList.remove('hide');
+  } else {
+    usernameMixed.classList.add('hide');
+  }
+
   if (isMoreThan4Length(username.value) === 'short') {
     usernameFailureShort.classList.remove('hide');
     usernameFailureLong.classList.add('hide');
   } else if (isMoreThan4Length(username.value) === 'long') {
     usernameFailureShort.classList.add('hide');
     usernameFailureLong.classList.remove('hide');
-  } else {
+  }
+
+  if (
+    isMoreThan4Length(username.value) !== 'short' &&
+    isMoreThan4Length(username.value) !== 'long'
+  ) {
     usernameFailureShort.classList.add('hide');
     usernameFailureLong.classList.add('hide');
   }
@@ -27,6 +40,12 @@ password.addEventListener('keyup', () => {
     passwordMis.classList.remove('hide');
   } else {
     passwordMis.classList.add('hide');
+  }
+
+  if (!strongPassword(password.value)) {
+    passwordWrong.classList.remove('hide');
+  } else {
+    passwordWrong.classList.add('hide');
   }
 });
 

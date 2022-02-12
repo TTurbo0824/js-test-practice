@@ -8,6 +8,10 @@ let usernameMixed = document.querySelector('.failure-mixed');
 let passwordMis = document.querySelector('.mismatch');
 let passwordWrong = document.querySelector('.failure-vali');
 
+let submitBnt = document.querySelector('.submit-bnt');
+let modal = document.querySelector('.backdrop');
+let closeBnt = document.querySelector('.fa-times');
+
 username.addEventListener('keyup', () => {
   if (username.value && !onlyNumberAndEnglish(username.value)) {
     usernameMixed.classList.remove('hide');
@@ -56,6 +60,24 @@ passwordRetype.addEventListener('keyup', () => {
     passwordMis.classList.add('hide');
   }
 });
+
+submitBnt.addEventListener('click', () => {
+  if (
+    username.value &&
+    password.value &&
+    usernameFailureShort.classList.contains('hide') &&
+    usernameFailureLong.classList.contains('hide') &&
+    usernameMixed.classList.contains('hide') &&
+    passwordMis.classList.contains('hide') &&
+    passwordWrong.classList.contains('hide')
+  ) {
+    modal.classList.remove('hide');
+  }
+});
+
+closeBnt.addEventListener('click', () => {
+  location.reload();
+})
 
 function isMoreThan4Length(value) {
   if (value.length < 4) return 'short';

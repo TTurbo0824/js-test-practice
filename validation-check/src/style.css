@@ -23,7 +23,6 @@ input {
   margin-left: auto;
   margin-right: auto;
   padding: 1rem;
-  /* background-color: yellow; */
 }
 
 .input-field {
@@ -48,4 +47,43 @@ input {
   margin-top: 0.75rem;
   border: none;
   font-size: 1rem;
+  background-color: #08ce5c;
+  color: white;
+}
+
+.backdrop {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.success-modal {
+  position: absolute;
+  top: 42.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14rem;
+  height: 8rem;
+  background-color: white;
+  text-align: right;
+}
+
+i {
+  cursor: pointer;
+  color: gray;
+  font-size: 1.1rem;
+  padding: 0.5rem 0.8rem;
+}
+
+i:hover {
+  color: black;
+}
+
+.signup-message {
+  text-align: center;
+  margin-top: 1rem;
 }

@@ -9,6 +9,8 @@ let passwordMis = document.querySelector('.mismatch');
 let passwordWrong = document.querySelector('.failure-vali');
 
 let submitBnt = document.querySelector('.submit-bnt');
+let emptyMessage = document.querySelector('.empty');
+
 let modal = document.querySelector('.backdrop');
 let closeBnt = document.querySelector('.fa-times');
 
@@ -72,12 +74,14 @@ submitBnt.addEventListener('click', () => {
     passwordWrong.classList.contains('hide')
   ) {
     modal.classList.remove('hide');
+  } else if (!username.value || !password.value || !passwordRetype.value) {
+    emptyMessage.classList.remove('hide');
   }
 });
 
 closeBnt.addEventListener('click', () => {
   location.reload();
-})
+});
 
 function isMoreThan4Length(value) {
   if (value.length < 4) return 'short';
